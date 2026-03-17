@@ -1,0 +1,14 @@
+meta {
+  name: Deletar Passageiro Masculino
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{baseUrl}}/sobreviventes/{{itemIdMasculino}}
+}
+
+docs {
+  Configure itemIdMasculino com o id retornado pelo POST 02 (masculino 3a classe).
+  Resposta esperada: 204.
+}

@@ -1,0 +1,14 @@
+meta {
+  name: Buscar Passageira Feminina
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/sobreviventes/{{itemIdFeminina}}
+}
+
+docs {
+  Configure itemIdFeminina com o id retornado pelo POST 01 (feminina 1a classe).
+  Esperado: survival_probability alto (acima de 0.8).
+}

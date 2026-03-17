@@ -1,0 +1,20 @@
+meta {
+  name: Campos Faltando - Espera 400
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/sobreviventes
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "Age": 30,
+    "Pclass": 2
+  }
+}

@@ -1,0 +1,25 @@
+meta {
+  name: Crianca 2a Classe - Cherbourg
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/sobreviventes
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "Age": 8,
+    "Parch": 1,
+    "SibSp": 2,
+    "Fare": 26.0,
+    "Pclass": 2,
+    "Sex": "female",
+    "Embarked": "C"
+  }
+}

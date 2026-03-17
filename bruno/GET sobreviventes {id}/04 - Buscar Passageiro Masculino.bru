@@ -1,0 +1,14 @@
+meta {
+  name: Buscar Passageiro Masculino
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/sobreviventes/{{itemIdMasculino}}
+}
+
+docs {
+  Configure itemIdMasculino com o id retornado pelo POST 02 (masculino 3a classe).
+  Esperado: survival_probability baixo (abaixo de 0.2).
+}

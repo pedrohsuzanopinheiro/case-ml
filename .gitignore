@@ -1,0 +1,10 @@
+build/
+lambda/model.pkl
+*.pyc
+__pycache__/
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate*
+*.tfvars
+.env

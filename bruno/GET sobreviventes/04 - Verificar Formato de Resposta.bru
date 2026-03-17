@@ -1,0 +1,13 @@
+meta {
+  name: Verificar Formato de Resposta
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/sobreviventes
+}
+
+docs {
+  Verifica que cada item retornado possui os campos: id, age, parch, sibsp, fare, pclass, sex, embarked, survival_probability, created_at.
+}

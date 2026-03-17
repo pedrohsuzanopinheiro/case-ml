@@ -1,0 +1,13 @@
+meta {
+  name: Buscar por ID Valido
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/sobreviventes/{{itemId}}
+}
+
+docs {
+  Substitua {{itemId}} pelo id retornado em um POST. Ou configure a variavel itemId no ambiente.
+}

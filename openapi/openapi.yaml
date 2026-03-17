@@ -1,0 +1,145 @@
+openapi: "3.0.1"
+info:
+  title: Titanic Survival API
+  version: "1.0"
+paths:
+  /sobreviventes:
+    post:
+      summary: Create survival prediction
+      operationId: createPrediction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PassengerInput"
+      responses:
+        "201":
+          description: Prediction created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PredictionResult"
+        "400":
+          description: Bad request
+      x-amazon-apigateway-integration:
+        httpMethod: POST
+        type: aws_proxy
+        uri: "${lambda_invoke_arn}"
+    get:
+      summary: List all predictions
+      operationId: listPredictions
+      responses:
+        "200":
+          description: List of predictions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PredictionItem"
+      x-amazon-apigateway-integration:
+        httpMethod: POST
+        type: aws_proxy
+        uri: "${lambda_invoke_arn}"
+  /sobreviventes/{id}:
+    get:
+      summary: Get prediction by ID
+      operationId: getPrediction
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Prediction item
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PredictionItem"
+        "404":
+          description: Not found
+      x-amazon-apigateway-integration:
+        httpMethod: POST
+        type: aws_proxy
+        uri: "${lambda_invoke_arn}"
+    delete:
+      summary: Delete prediction
+      operationId: deletePrediction
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Deleted
+        "404":
+          description: Not found
+      x-amazon-apigateway-integration:
+        httpMethod: POST
+        type: aws_proxy
+        uri: "${lambda_invoke_arn}"
+components:
+  schemas:
+    PassengerInput:
+      type: object
+      required:
+        - Age
+        - Parch
+        - SibSp
+        - Fare
+        - Pclass
+        - Sex
+        - Embarked
+      properties:
+        Age:
+          type: number
+        Parch:
+          type: integer
+        SibSp:
+          type: integer
+        Fare:
+          type: number
+        Pclass:
+          type: integer
+          enum: [1, 2, 3]
+        Sex:
+          type: string
+          enum: [male, female]
+        Embarked:
+          type: string
+          enum: [C, Q, S]
+    PredictionResult:
+      type: object
+      properties:
+        id:
+          type: string
+        survival_probability:
+          type: number
+    PredictionItem:
+      type: object
+      properties:
+        id:
+          type: string
+        age:
+          type: number
+        parch:
+          type: integer
+        sibsp:
+          type: integer
+        fare:
+          type: number
+        pclass:
+          type: integer
+        sex:
+          type: string
+        embarked:
+          type: string
+        survival_probability:
+          type: number
+        created_at:
+          type: string

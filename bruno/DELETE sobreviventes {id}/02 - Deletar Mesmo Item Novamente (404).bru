@@ -1,0 +1,14 @@
+meta {
+  name: Deletar Mesmo Item Novamente - Espera 404
+  type: http
+  seq: 2
+}
+
+delete {
+  url: {{baseUrl}}/sobreviventes/{{itemId}}
+}
+
+docs {
+  Execute após o DELETE 01 com o mesmo itemId.
+  Resposta esperada: 404, pois o item já foi removido.
+}

@@ -1,0 +1,25 @@
+meta {
+  name: Idoso Masculino 1a Classe - Queenstown
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/sobreviventes
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "Age": 71,
+    "Parch": 0,
+    "SibSp": 0,
+    "Fare": 49.5042,
+    "Pclass": 1,
+    "Sex": "male",
+    "Embarked": "Q"
+  }
+}

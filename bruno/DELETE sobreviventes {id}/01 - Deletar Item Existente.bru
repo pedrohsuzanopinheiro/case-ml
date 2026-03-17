@@ -1,0 +1,14 @@
+meta {
+  name: Deletar Item Existente - Espera 204
+  type: http
+  seq: 1
+}
+
+delete {
+  url: {{baseUrl}}/sobreviventes/{{itemId}}
+}
+
+docs {
+  Configure itemId com o id retornado por um POST.
+  Resposta esperada: 204 sem body.
+}

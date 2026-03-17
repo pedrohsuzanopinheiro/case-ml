@@ -1,0 +1,25 @@
+meta {
+  name: Masculino 3a Classe - Southampton
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/sobreviventes
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "Age": 45,
+    "Parch": 0,
+    "SibSp": 0,
+    "Fare": 7.25,
+    "Pclass": 3,
+    "Sex": "male",
+    "Embarked": "S"
+  }
+}

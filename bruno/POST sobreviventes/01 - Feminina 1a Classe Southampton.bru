@@ -1,0 +1,25 @@
+meta {
+  name: Feminina 1a Classe - Southampton
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/sobreviventes
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "Age": 29,
+    "Parch": 0,
+    "SibSp": 1,
+    "Fare": 211.3375,
+    "Pclass": 1,
+    "Sex": "female",
+    "Embarked": "S"
+  }
+}
