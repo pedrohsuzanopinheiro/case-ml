@@ -9,3 +9,4 @@ terraform.tfstate*
 *.tfvars
 .env
 .venv/
+DECISOES_TECNICAS.md
