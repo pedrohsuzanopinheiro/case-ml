@@ -27,17 +27,33 @@ paths:
         type: aws_proxy
         uri: "${lambda_invoke_arn}"
     get:
-      summary: List all predictions
+      summary: List predictions (paginated)
       operationId: listPredictions
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+          description: Maximum number of items per page
+        - name: last_key
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Pagination cursor returned from a previous request
       responses:
         "200":
-          description: List of predictions
+          description: Paginated list of predictions
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/PredictionItem"
+                $ref: "#/components/schemas/PaginatedPredictions"
+        "400":
+          description: Invalid pagination parameters
       x-amazon-apigateway-integration:
         httpMethod: POST
         type: aws_proxy
@@ -96,6 +112,10 @@ components:
         - Sex
         - Embarked
       properties:
+        id:
+          type: string
+          format: uuid
+          description: "Optional UUID v4. If provided and exists in DynamoDB, the record is updated instead of created."
         Age:
           type: number
         Parch:
@@ -143,3 +163,16 @@ components:
           type: number
         created_at:
           type: string
+    PaginatedPredictions:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/PredictionItem"
+        count:
+          type: integer
+          description: Number of items in this page
+        last_key:
+          type: string
+          description: Cursor for the next page. Absent when there are no more pages.
