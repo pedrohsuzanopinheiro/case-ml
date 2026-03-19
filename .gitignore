@@ -13,3 +13,4 @@ DECISOES_TECNICAS.md
 scripts/build_package.sh
 scripts/test_local.sh
 tests/
+.claude/

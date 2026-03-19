@@ -22,11 +22,7 @@ case-ml/
 │   └── requirements.txt        # scikit-learn==1.1.3, pandas==1.5.3
 ├── scripts/
 │   ├── download_model.sh       # Downloads model.pkl from source repo
-│   ├── build_package.sh        # Docker build → build/lambda_package.zip
-│   ├── build_and_push.sh       # Build container image and push to ECR
-│   └── test_local.sh           # Runs integration tests inside Docker (no AWS needed)
-├── tests/
-│   └── test_local.py           # Integration tests using moto (DynamoDB mock)
+│   └── build_and_push.sh       # Build container image and push to ECR
 ├── bruno/                      # Bruno API collection for manual testing
 │   ├── bruno.json              # Collection config
 │   ├── environments/
